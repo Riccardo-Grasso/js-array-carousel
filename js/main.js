@@ -24,7 +24,7 @@ const text = [
 ];
 
 //SELEZIONO LA COLONNA CON IMG GRANDE
-const imageBig = document.querySelector(".row .image-big");
+const imageBig = document.querySelector(".container .my-row .image-big");
 imageBig.classList.add("image-big-container");
 
 //INIZIALIZZO INDICE
@@ -42,4 +42,21 @@ for (let i = 0; i < items.length; i++) {
 
     const img = `<img class="${classeActive}" src="${currentImg}" alt="immagine ${i}">`;
     imageBig.innerHTML += img;
+}
+
+//LISTA IMG SINISTRA
+const imageList = document.querySelector(".my-row .image-list");
+imageList.classList.add("image-list-container", "d-flex", "flex-column");
+
+for (let i = 0; i < items.length; i++) {
+    const currentImg = items[i];
+
+    let classeActive = "";
+
+    /*  if (i === currentIndex) {
+         classeActive = "active";
+     }
+  */
+    const img = `<img src="${currentImg}" alt="immagine ${i}">`;
+    imageList.innerHTML += img;
 }
