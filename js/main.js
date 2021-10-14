@@ -28,7 +28,6 @@ const imageBig = document.querySelector(".image-big");
 imageBig.classList.add("image-big-container");
 
 //INIZIALIZZO INDICE
-let currentIndexBig = 0;
 let currentIndex = 0;
 
 //INSERISCO IMG NEL CONTENITORE E METTO CLASSE ACTIVE
@@ -37,7 +36,7 @@ for (let i = 0; i < items.length; i++) {
 
     let classeActive = "";
 
-    if (i === currentIndexBig) {
+    if (i === currentIndex) {
         classeActive = "active";
     }
 
@@ -72,20 +71,15 @@ arrowBottom.addEventListener("click", function () {
     imgActive.classList.remove("active");
     imgActiveRight.classList.remove("active");
     currentIndex++;
-    currentIndexBig++;
 
     if (currentIndex > items.length - 1) {
         currentIndex = 0;
     }
-    if (currentIndexBig > items.length - 1) {
-        currentIndexBig = 0;
-    }
-
 
     const imgTags = imageList.querySelectorAll("img");
     const imgTagsBig = imageBig.querySelectorAll("img");
     const newActiveImage = imgTags[currentIndex];
-    const newActiveImageBig = imgTagsBig[currentIndexBig];
+    const newActiveImageBig = imgTagsBig[currentIndex];
     newActiveImage.classList.add("active");
     newActiveImageBig.classList.add("active");
 });
@@ -94,9 +88,10 @@ arrowBottom.addEventListener("click", function () {
 
 arrowTop.addEventListener("click", function () {
 
+    const imgActiveRight = imageBig.querySelector(".active");
     const imgActive = imageList.querySelector(".active");
     imgActive.classList.remove("active");
-
+    imgActiveRight.classList.remove("active");
     currentIndex--;
 
     if (currentIndex < 0) {
@@ -104,7 +99,9 @@ arrowTop.addEventListener("click", function () {
     }
 
     const imgTags = imageList.querySelectorAll("img");
+    const imgTagsBig = imageBig.querySelectorAll("img");
     const newActiveImage = imgTags[currentIndex];
-
+    const newActiveImageBig = imgTagsBig[currentIndex];
     newActiveImage.classList.add("active");
+    newActiveImageBig.classList.add("active");
 });
