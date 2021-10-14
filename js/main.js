@@ -24,10 +24,11 @@ const text = [
 ];
 
 //SELEZIONO LA COLONNA CON IMG GRANDE
-const imageBig = document.querySelector(".container .row .image-big");
+const imageBig = document.querySelector(".image-big");
 imageBig.classList.add("image-big-container");
 
 //INIZIALIZZO INDICE
+let currentIndexBig = 0;
 let currentIndex = 0;
 
 //INSERISCO IMG NEL CONTENITORE E METTO CLASSE ACTIVE
@@ -36,7 +37,7 @@ for (let i = 0; i < items.length; i++) {
 
     let classeActive = "";
 
-    if (i === currentIndex) {
+    if (i === currentIndexBig) {
         classeActive = "active";
     }
 
@@ -44,7 +45,7 @@ for (let i = 0; i < items.length; i++) {
     imageBig.innerHTML += img;
 }
 
-//LISTA IMG SINISTRA
+//LISTA IMG DESTRA
 const imageList = document.querySelector(".row .image-list");
 imageList.classList.add("image-list-container", "d-flex", "flex-column");
 
@@ -57,6 +58,53 @@ for (let i = 0; i < items.length; i++) {
         classeActive = "active";
     }
 
-    const img = `<img src="${currentImg}" alt="immagine ${i}">`;
+    const img = `<img class="${classeActive}" src="${currentImg}" alt="immagine ${i}">`;
     imageList.innerHTML += img;
 }
+
+//FRECCE 
+const arrowTop = document.querySelector(".arrow-top");
+const arrowBottom = document.querySelector(".arrow-bottom");
+
+arrowBottom.addEventListener("click", function () {
+    const imgActiveRight = imageBig.querySelector(".active");
+    const imgActive = imageList.querySelector(".active");
+    imgActive.classList.remove("active");
+    imgActiveRight.classList.remove("active");
+    currentIndex++;
+    currentIndexBig++;
+
+    if (currentIndex > items.length - 1) {
+        currentIndex = 0;
+    }
+    if (currentIndexBig > items.length - 1) {
+        currentIndexBig = 0;
+    }
+
+
+    const imgTags = imageList.querySelectorAll("img");
+    const imgTagsBig = imageBig.querySelectorAll("img");
+    const newActiveImage = imgTags[currentIndex];
+    const newActiveImageBig = imgTagsBig[currentIndexBig];
+    newActiveImage.classList.add("active");
+    newActiveImageBig.classList.add("active");
+});
+
+
+
+arrowTop.addEventListener("click", function () {
+
+    const imgActive = imageList.querySelector(".active");
+    imgActive.classList.remove("active");
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+        currentIndex = items.length - 1;
+    }
+
+    const imgTags = imageList.querySelectorAll("img");
+    const newActiveImage = imgTags[currentIndex];
+
+    newActiveImage.classList.add("active");
+});
