@@ -27,6 +27,9 @@ const text = [
 const imageBig = document.querySelector(".image-big");
 imageBig.classList.add("image-big-container");
 
+const imageList = document.querySelector(".row .image-list");
+imageList.classList.add("image-list-container", "d-flex", "flex-column");
+
 //INIZIALIZZO INDICE
 let currentIndex = 0;
 
@@ -42,22 +45,6 @@ for (let i = 0; i < items.length; i++) {
 
     const img = `<img class="${classeActive}" src="${currentImg}" alt="immagine ${i}">`;
     imageBig.innerHTML += img;
-}
-
-//LISTA IMG DESTRA
-const imageList = document.querySelector(".row .image-list");
-imageList.classList.add("image-list-container", "d-flex", "flex-column");
-
-for (let i = 0; i < items.length; i++) {
-    const currentImg = items[i];
-
-    let classeActive = "";
-
-    if (i === currentIndex) {
-        classeActive = "active";
-    }
-
-    const img = `<img class="${classeActive}" src="${currentImg}" alt="immagine ${i}">`;
     imageList.innerHTML += img;
 }
 
