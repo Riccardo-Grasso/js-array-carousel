@@ -30,7 +30,9 @@ imageBig.classList.add("image-big-container");
 const imageList = document.querySelector(".row .image-list");
 imageList.classList.add("image-list-container", "d-flex", "flex-column");
 
-const textList = document.querySelector(".title");
+const titleList = document.querySelector(".my-titolo");
+
+const textList = document.querySelector(".my-testo");
 
 //INIZIALIZZO INDICE
 let currentIndex = 0;
@@ -48,12 +50,12 @@ for (let i = 0; i < items.length; i++) {
     }
 
     const img = `<img class="${classeActive}" src="${currentImg}" alt="immagine ${i}">`;
-    const titolo = `<h3 class="${classeActive}">${currentTitle}</h3>`;
+    const titolo = `<h2 class="${classeActive}">${currentTitle}</h2>`;
     const testo = `<p class="${classeActive}">${currentText}</p>`;
 
     imageBig.innerHTML += img;
     imageList.innerHTML += img;
-    textList.innerHTML += titolo;
+    titleList.innerHTML += titolo;
     textList.innerHTML += testo;
 
     console.log(currentTitle);
@@ -68,8 +70,14 @@ const arrowBottom = document.querySelector(".arrow-bottom");
 arrowBottom.addEventListener("click", function () {
     const imgActiveRight = imageBig.querySelector(".active");
     const imgActive = imageList.querySelector(".active");
+    const titleActive = titleList.querySelector(".active");
+    const textActive = textList.querySelector(".active");
+
     imgActive.classList.remove("active");
     imgActiveRight.classList.remove("active");
+    titleActive.classList.remove("active");
+    textActive.classList.remove("active");
+
     currentIndex++;
 
     if (currentIndex > items.length - 1) {
@@ -78,10 +86,18 @@ arrowBottom.addEventListener("click", function () {
 
     const imgTags = imageList.querySelectorAll("img");
     const imgTagsBig = imageBig.querySelectorAll("img");
+    const titleTags = titleList.querySelectorAll("h2");
+    const textTags = textList.querySelectorAll("p");
+
     const newActiveImage = imgTags[currentIndex];
     const newActiveImageBig = imgTagsBig[currentIndex];
+    const newActiveTitle = titleTags[currentIndex];
+    const newActiveText = textTags[currentIndex];
+
     newActiveImage.classList.add("active");
     newActiveImageBig.classList.add("active");
+    newActiveTitle.classList.add("active");
+    newActiveText.classList.add("active");
 });
 
 
@@ -89,8 +105,14 @@ arrowTop.addEventListener("click", function () {
 
     const imgActiveRight = imageBig.querySelector(".active");
     const imgActive = imageList.querySelector(".active");
+    const titleActive = titleList.querySelector(".active");
+    const textActive = textList.querySelector(".active");
+
     imgActive.classList.remove("active");
     imgActiveRight.classList.remove("active");
+    titleActive.classList.remove("active");
+    textActive.classList.remove("active");
+
     currentIndex--;
 
     if (currentIndex < 0) {
@@ -99,8 +121,16 @@ arrowTop.addEventListener("click", function () {
 
     const imgTags = imageList.querySelectorAll("img");
     const imgTagsBig = imageBig.querySelectorAll("img");
+    const titleTags = titleList.querySelectorAll("h2");
+    const textTags = textList.querySelectorAll("p");
+
     const newActiveImage = imgTags[currentIndex];
     const newActiveImageBig = imgTagsBig[currentIndex];
+    const newActiveTitle = titleTags[currentIndex];
+    const newActiveText = textTags[currentIndex];
+
     newActiveImage.classList.add("active");
     newActiveImageBig.classList.add("active");
+    newActiveTitle.classList.add("active");
+    newActiveText.classList.add("active");
 });
