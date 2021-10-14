@@ -30,12 +30,16 @@ imageBig.classList.add("image-big-container");
 const imageList = document.querySelector(".row .image-list");
 imageList.classList.add("image-list-container", "d-flex", "flex-column");
 
+const textList = document.querySelector(".title");
+
 //INIZIALIZZO INDICE
 let currentIndex = 0;
 
 //INSERISCO IMG NEL CONTENITORE E METTO CLASSE ACTIVE
 for (let i = 0; i < items.length; i++) {
     const currentImg = items[i];
+    const currentTitle = title[i];
+    const currentText = text[i];
 
     let classeActive = "";
 
@@ -44,9 +48,18 @@ for (let i = 0; i < items.length; i++) {
     }
 
     const img = `<img class="${classeActive}" src="${currentImg}" alt="immagine ${i}">`;
+    const titolo = `<h3 class="${classeActive}">${currentTitle}</h3>`;
+    const testo = `<p class="${classeActive}">${currentText}</p>`;
+
     imageBig.innerHTML += img;
     imageList.innerHTML += img;
+    textList.innerHTML += titolo;
+    textList.innerHTML += testo;
+
+    console.log(currentTitle);
+    console.log(currentText);
 }
+
 
 //FRECCE 
 const arrowTop = document.querySelector(".arrow-top");
