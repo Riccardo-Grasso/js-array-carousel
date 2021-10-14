@@ -84,8 +84,6 @@ arrowBottom.addEventListener("click", function () {
     newActiveImageBig.classList.add("active");
 });
 
-
-
 arrowTop.addEventListener("click", function () {
 
     const imgActiveRight = imageBig.querySelector(".active");
